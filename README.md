@@ -1,19 +1,18 @@
 # Business China YLP Immersion Programme - Shenzhen
 
-这是一个独立的深圳项目报名页面，适合单独部署到新的 GitHub 仓库和新的 Vercel 项目。
+这是一个独立的深圳项目申请页面，适合单独部署到新的 GitHub 仓库和新的 Vercel 项目。
 
 ## 推荐上线方案
 
 - 代码托管：GitHub
 - 页面部署：Vercel
-- 报名数据与付款截图：Supabase
+- 申请数据：Supabase
 
 这个方案适合你的原因：
 
-- 学员可直接公开访问页面报名
-- 付款截图可以上传保存
-- 你可以在 Supabase 后台查看所有报名记录
-- 你可以按 `Full Name` 和 PayNow 付款备注手动比对收款
+- 学员可直接公开访问页面提交申请
+- 你可以在 Supabase 后台查看所有申请记录
+- 你可以先筛选合适的申请者，再邀请他们进入付款流程
 
 ## 当前表单收集内容
 
@@ -21,15 +20,12 @@
 - Email Address
 - Contact Number
 - Company Name & Designation
-- Do you require an invoice?
-- Company / Individual Name for Invoice
-- Payment Proof
+- PDPA consent
 
 ## 当前项目信息
 
 - Programme: `Business China YLP Immersion Programme - Shenzhen`
-- Amount: `SGD 2,650.00`
-- Payee: `Sing-China`
+- Current stage: `Application collection only`
 - Main page: [index.html](file:///Users/zihangzhu/Documents/trae_projects/BUSINESS%20CHINA/public/index.html)
 - Success page: [success.html](file:///Users/zihangzhu/Documents/trae_projects/BUSINESS%20CHINA/public/success.html)
 
@@ -50,6 +46,8 @@
 - `registrations` 表
 - `payment-proofs` 存储桶
 - 匿名提交和匿名上传策略
+
+当前页面处于申请收集阶段，不要求上传付款凭证；保留这些字段和存储配置是为了后续恢复付款流程更方便。
 
 ### 3. 填写 Supabase 前端配置
 
@@ -100,42 +98,31 @@ window.APP_CONFIG = {
 
 - `api/dingtalk-notify.js`
 
-它会在 Supabase 写入成功后，向钉钉发送一条包含 `signup` 关键词的文本消息。
+它会在 Supabase 写入成功后，向钉钉发送一条包含 `signup` 关键词的申请提醒消息。
 
 ## 学员提交后，数据会去哪里
 
-- 报名表数据：Supabase 表 `registrations`
-- 付款截图：Supabase Storage `payment-proofs`
+- 申请表数据：Supabase 表 `registrations`
+- 当前阶段不上传付款截图
 
 前端提交逻辑在：
 
 - [script.js](file:///Users/zihangzhu/Documents/trae_projects/BUSINESS%20CHINA/public/script.js)
 
-## 你如何核对 PayNow 收款和报名表
+## 当前筛选阶段如何查看申请
 
-建议学员一定按页面提示，把自己的全名写进付款备注。
-
-你后续核对时：
-
-1. 打开 Supabase Table Editor
-2. 查看 `registrations` 表
-3. 按 `full_name` 查找报名记录
-4. 对照 PayNow 收款记录里的付款备注姓名
-5. 打开对应提交时间和付款截图进行确认
-6. 核对成功后，把该记录视为已付款
-
-你主要会用到这些字段：
+你当前主要会用到这些字段：
 
 - `full_name`
 - `email`
 - `created_at`
-- `payment_proof_path`
+- `company_designation`
 - `status`
 
 ## 当前按钮和页面说明
 
-- 页面已经提醒用户：`Please enter your full name in the payment reference.`
-- 提交按钮文案为 `Register`
+- 页面当前不显示付款信息
+- 提交按钮文案为 `Submit Application`
 - 提交成功后会跳转到独立成功页 `success.html`
 
 ## 当前项目结构

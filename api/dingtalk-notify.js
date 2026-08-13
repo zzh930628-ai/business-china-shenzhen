@@ -14,12 +14,11 @@ module.exports = async (req, res) => {
   try {
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
     const lines = [
-      "signup New Registration",
+      "signup New Application Received",
       "",
       `Name: ${body.fullName || "-"}`,
       `Programme: ${body.tripName || "-"}`,
       `Phone: ${body.contactNumber || "-"}`,
-      `Invoice: ${body.requireInvoice || "-"}`,
       `Submission ID: ${body.submissionId || "-"}`
     ];
 

@@ -192,6 +192,12 @@ img {
   color: var(--muted);
 }
 
+.details-summary--standalone {
+  margin-top: 18px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
 .detail-group {
   margin-top: 24px;
 }
@@ -301,6 +307,19 @@ input:disabled {
 .compact-section {
   padding-top: 24px;
   border-top: 1px solid var(--line);
+}
+
+.pdpa-section {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.pdpa-copy {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
 }
 
 .invoice-choice {

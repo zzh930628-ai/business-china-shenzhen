@@ -2,16 +2,14 @@ const form = document.getElementById("registrationForm");
 const submitButton = document.getElementById("submitButton");
 const formMessage = document.getElementById("formMessage");
 const isFilePreview = window.location.protocol === "file:";
-const invoiceInputs = Array.from(document.querySelectorAll('input[name="requireInvoice"]'));
-const invoiceNameInput = document.querySelector('input[name="invoiceName"]');
 const appConfig = window.APP_CONFIG || {};
 const supabaseUrl = appConfig.supabaseUrl || "";
 const supabaseAnonKey = appConfig.supabaseAnonKey || "";
-const supabaseBucket = appConfig.supabaseBucket || "payment-proofs";
 const supabaseClient =
   supabaseUrl && supabaseAnonKey && window.supabase
     ? window.supabase.createClient(supabaseUrl, supabaseAnonKey)
     : null;
+
 const tripConfig = {
   submissionPrefix: "YLP",
   tripName: "Business China YLP Immersion Programme - Shenzhen",
@@ -19,7 +17,7 @@ const tripConfig = {
   amountDisplay: "SGD 2,650.00",
   payeeName: "Sing-China",
   successPath: "/success.html",
-  idleButtonLabel: "Register"
+  idleButtonLabel: "Submit Application"
 };
 
 submitButton.dataset.idleLabel = tripConfig.idleButtonLabel;
@@ -54,45 +52,6 @@ async function notifyDingTalk(payload) {
   }
 }
 
-async function uploadPaymentProof(file, submissionId) {
-  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "-");
-  const storagePath = `${submissionId}/${Date.now()}-${safeName}`;
-  const { error } = await supabaseClient.storage.from(supabaseBucket).upload(storagePath, file, {
-    cacheControl: "3600",
-    upsert: false,
-    contentType: file.type || "application/octet-stream"
-  });
-
-  if (error) {
-    throw error;
-  }
-
-  return {
-    path: storagePath,
-    name: file.name,
-    type: file.type || null,
-    size: file.size || null
-  };
-}
-
-function syncInvoiceField() {
-  const selected = form.querySelector('input[name="requireInvoice"]:checked')?.value;
-  const required = selected === "Yes";
-
-  invoiceNameInput.disabled = !required;
-  invoiceNameInput.required = required;
-
-  if (!required) {
-    invoiceNameInput.value = "";
-  }
-}
-
-invoiceInputs.forEach((input) => {
-  input.addEventListener("change", syncInvoiceField);
-});
-
-syncInvoiceField();
-
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -113,17 +72,11 @@ form.addEventListener("submit", async (event) => {
 
   submitButton.disabled = true;
   submitButton.textContent = "Submitting...";
-  setMessage("Saving your registration, please wait.", "");
+  setMessage("Submitting your application, please wait.", "");
 
   try {
     const formData = new FormData(form);
-    const paymentProof = formData.get("paymentProof");
-    if (!(paymentProof instanceof File) || paymentProof.size === 0) {
-      throw new Error("Payment proof is required.");
-    }
-
     const submissionId = createSubmissionId();
-    const uploadedProof = await uploadPaymentProof(paymentProof, submissionId);
 
     const payload = {
       submission_id: submissionId,
@@ -134,13 +87,13 @@ form.addEventListener("submit", async (event) => {
       email: String(formData.get("email") || "").trim(),
       contact_number: String(formData.get("contactNumber") || "").trim(),
       company_designation: String(formData.get("companyDesignation") || "").trim(),
-      require_invoice: String(formData.get("requireInvoice") || "").trim(),
-      invoice_name: String(formData.get("invoiceName") || "").trim() || null,
-      payment_proof_path: uploadedProof.path,
-      payment_proof_name: uploadedProof.name,
-      payment_proof_type: uploadedProof.type,
-      payment_proof_size: uploadedProof.size,
-      status: "pending_payment_verification"
+      require_invoice: "to_be_collected_later",
+      invoice_name: null,
+      payment_proof_path: "not_required_at_application_stage",
+      payment_proof_name: "not_required_at_application_stage",
+      payment_proof_type: null,
+      payment_proof_size: null,
+      status: "pending_shortlist_review"
     };
 
     const { error } = await supabaseClient.from("registrations").insert(payload);
@@ -150,7 +103,7 @@ form.addEventListener("submit", async (event) => {
 
     const result = {
       ok: true,
-      message: "Registration submitted successfully. We will verify your PayNow payment and contact you by email.",
+      message: "Application submitted successfully. Our team will review your submission and contact shortlisted applicants with the next steps.",
       submissionId
     };
 
@@ -171,8 +124,8 @@ form.addEventListener("submit", async (event) => {
         email: payload.email,
         contactNumber: payload.contact_number,
         companyDesignation: payload.company_designation,
-        requireInvoice: payload.require_invoice,
-        invoiceName: payload.invoice_name || "-",
+        requireInvoice: "To be collected later",
+        invoiceName: "To be collected later",
         amountDisplay: tripConfig.amountDisplay,
         payeeName: tripConfig.payeeName,
         createdAt: new Date().toISOString()
@@ -182,7 +135,6 @@ form.addEventListener("submit", async (event) => {
     }
 
     form.reset();
-    syncInvoiceField();
     const successUrl = new URL(tripConfig.successPath, window.location.origin);
     successUrl.searchParams.set("submissionId", result.submissionId);
     successUrl.searchParams.set("email", payload.email);
@@ -192,6 +144,6 @@ form.addEventListener("submit", async (event) => {
     setMessage(error.message || "Submission failed. Please try again.", "error");
   } finally {
     submitButton.disabled = false;
-    submitButton.textContent = submitButton.dataset.idleLabel || "Register";
+    submitButton.textContent = submitButton.dataset.idleLabel || "Submit Application";
   }
 });
