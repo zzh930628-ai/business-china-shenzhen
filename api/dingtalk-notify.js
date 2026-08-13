@@ -14,19 +14,13 @@ module.exports = async (req, res) => {
   try {
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
     const lines = [
-      "signup New registration received",
+      "signup New Registration",
       "",
+      `Name: ${body.fullName || "-"}`,
       `Programme: ${body.tripName || "-"}`,
-      `Submission ID: ${body.submissionId || "-"}`,
-      `Full Name: ${body.fullName || "-"}`,
-      `Email: ${body.email || "-"}`,
-      `Contact Number: ${body.contactNumber || "-"}`,
-      `Company & Designation: ${body.companyDesignation || "-"}`,
-      `Invoice Required: ${body.requireInvoice || "-"}`,
-      `Invoice Information: ${body.invoiceName || "-"}`,
-      `Amount: ${body.amountDisplay || "-"}`,
-      `Payee: ${body.payeeName || "-"}`,
-      `Created At: ${body.createdAt || new Date().toISOString()}`
+      `Phone: ${body.contactNumber || "-"}`,
+      `Invoice: ${body.requireInvoice || "-"}`,
+      `Submission ID: ${body.submissionId || "-"}`
     ];
 
     const response = await fetch(webhookUrl, {
