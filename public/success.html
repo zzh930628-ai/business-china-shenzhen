@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business China YLP Immersion Programme - Shenzhen | Registration Submitted</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f7fb;
+        --surface: #ffffff;
+        --surface-soft: #f8fbff;
+        --ink: #17284a;
+        --muted: #607089;
+        --line: #d8e1ef;
+        --brand: #12357f;
+        --brand-dark: #091b45;
+        --accent: #cfa35f;
+        --shadow: 0 24px 60px rgba(9, 27, 69, 0.08);
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: radial-gradient(circle at top right, rgba(18, 53, 127, 0.08), transparent 24%), linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%);
+        color: var(--ink);
+      }
+      .topbar { background: #051127; color: #fff; }
+      .topbar-inner { max-width: 1180px; margin: 0 auto; padding: 16px 24px; }
+      .brand-name { font-size: 1.45rem; font-weight: 800; }
+      .brand-sub { margin-top: 4px; color: rgba(255,255,255,.72); font-size: .95rem; }
+      .page { max-width: 1180px; margin: 0 auto; padding: 42px 24px 72px; }
+      .hero { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(320px,.85fr); gap: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow); padding: 34px; }
+      .eyebrow { margin: 0 0 10px; color: var(--brand); text-transform: uppercase; letter-spacing: .14em; font-size: .76rem; font-weight: 800; }
+      h1,h2,h3,p { margin-top: 0; }
+      h1 { margin-bottom: 16px; font-size: clamp(2.4rem,5vw,4rem); line-height: 1.02; }
+      .intro { color: var(--muted); font-size: 1.06rem; line-height: 1.8; max-width: 60ch; }
+      .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+      .badges span { border: 1px solid #d5e1fb; background: #eff5ff; color: var(--brand); border-radius: 999px; padding: 9px 12px; font-size: .9rem; font-weight: 700; }
+      .summary { margin-top: 28px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+      .summary-row { display: flex; justify-content: space-between; gap: 18px; padding: 16px 18px; background: var(--surface-soft); }
+      .summary-row + .summary-row { border-top: 1px solid var(--line); }
+      .summary-row span { color: var(--muted); }
+      .hero-side { border-radius: 24px; padding: 24px; background: linear-gradient(180deg, rgba(18,53,127,.06) 0%, rgba(207,163,95,.08) 100%), #fff; border: 1px solid var(--line); }
+      .hero-side h2 { margin-bottom: 14px; }
+      .hero-side p { color: var(--muted); line-height: 1.75; }
+      .qingdao-points { display: grid; gap: 14px; margin-top: 20px; }
+      .qingdao-points article { padding: 16px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,255,255,.9); }
+      .qingdao-points h3 { margin: 0 0 6px; font-size: 1rem; color: var(--brand); }
+      .qingdao-points p { margin: 0; }
+      .next-steps-box { margin-top: 24px; padding: 22px 24px; border-radius: 22px; border: 1px solid var(--line); background: linear-gradient(180deg, #fbfdff 0%, #f5f8ff 100%); }
+      .next-steps-box h2 { margin-bottom: 14px; }
+      .next-steps-box ul { margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.85; }
+      @media (max-width: 980px) { .hero { grid-template-columns: 1fr; } }
+      @media (max-width: 760px) {
+        .page { padding: 24px 14px 48px; }
+        .hero,.next-steps-box { padding: 22px; border-radius: 20px; }
+        .summary-row { flex-direction: column; align-items: flex-start; }
+        h1 { font-size: 2.2rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand-name">Business China</div>
+        <div class="brand-sub">YLP Immersion Programme - Shenzhen</div>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Registration Submitted</p>
+          <h1 id="successHeadline">Thank you.<br />See You In Shenzhen.</h1>
+          <p class="intro">
+            Your registration and payment proof have been received successfully. Our team will review your submission and verify your PayNow payment shortly.
+          </p>
+
+          <div class="badges">
+            <span>7-Day Executive Learning Journey</span>
+            <span>Shenzhen Innovation Hub</span>
+            <span>PayNow Payment Received</span>
+          </div>
+
+          <div class="summary">
+            <div class="summary-row">
+              <span>Submission ID</span>
+              <strong id="successSubmissionId">-</strong>
+            </div>
+            <div class="summary-row">
+              <span>Registered Email</span>
+              <strong id="successEmail">-</strong>
+            </div>
+            <div class="summary-row">
+              <span>Payment Status</span>
+              <strong>Pending Verification</strong>
+            </div>
+          </div>
+
+          <div class="next-steps-box">
+            <h2>What Happens Next</h2>
+            <ul>
+              <li>Our team verifies your PayNow payment and payment proof.</li>
+              <li>A registration receipt email will be sent to your registered email address.</li>
+              <li>If an invoice was requested, it will be sent within 5 working days after payment verification.</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <p class="eyebrow">Discover Shenzhen</p>
+          <h2>What You May Experience In Shenzhen</h2>
+          <p>
+            Shenzhen brings together frontier technology, entrepreneurial energy and fast-moving industrial transformation in one of China’s most dynamic innovation ecosystems.
+          </p>
+          <div class="qingdao-points">
+            <article>
+              <h3>AI &amp; Digital Platforms</h3>
+              <p>Learn how artificial intelligence is being applied across digital platforms, public services and enterprise operations.</p>
+            </article>
+            <article>
+              <h3>Innovation Ecosystem</h3>
+              <p>Understand how Shenzhen connects startups, global technology firms, investors and advanced manufacturing.</p>
+            </article>
+            <article>
+              <h3>Robotics &amp; Smart Industry</h3>
+              <p>Explore real-world applications in robotics, healthcare technology, entrepreneurship and smart manufacturing.</p>
+            </article>
+          </div>
+        </aside>
+      </section>
+
+    </main>
+
+    <script src="./success.js"></script>
+  </body>
+</html>
