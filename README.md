@@ -88,6 +88,20 @@ window.APP_CONFIG = {
 
 这是纯静态页面，不需要额外构建配置。
 
+### 6. 配置钉钉通知
+
+如果你要在报名成功后把通知发到钉钉群，请在 Vercel 项目的 Environment Variables 中新增：
+
+- `DINGTALK_WEBHOOK_URL`
+
+值就是你的钉钉机器人 webhook URL。
+
+当前项目已经内置通知接口：
+
+- `api/dingtalk-notify.js`
+
+它会在 Supabase 写入成功后，向钉钉发送一条包含 `signup` 关键词的文本消息。
+
 ## 学员提交后，数据会去哪里
 
 - 报名表数据：Supabase 表 `registrations`

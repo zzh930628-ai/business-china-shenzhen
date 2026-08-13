@@ -16,6 +16,7 @@ const tripConfig = {
   submissionPrefix: "YLP",
   tripName: "Business China YLP Immersion Programme - Shenzhen",
   amountValue: 2650,
+  amountDisplay: "SGD 2,650.00",
   payeeName: "Sing-China",
   successPath: "/success.html",
   idleButtonLabel: "Register"
@@ -36,6 +37,21 @@ function createSubmissionId() {
   const prefix = tripConfig.submissionPrefix;
   const randomPart = Math.random().toString(36).slice(2, 8).toUpperCase();
   return `${prefix}-${Date.now()}-${randomPart}`;
+}
+
+async function notifyDingTalk(payload) {
+  const response = await fetch("/api/dingtalk-notify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    const result = await response.json().catch(() => ({}));
+    throw new Error(result.message || "DingTalk notification failed.");
+  }
 }
 
 async function uploadPaymentProof(file, submissionId) {
@@ -146,6 +162,24 @@ form.addEventListener("submit", async (event) => {
         fullName: payload.full_name
       })
     );
+
+    try {
+      await notifyDingTalk({
+        tripName: tripConfig.tripName,
+        submissionId: result.submissionId,
+        fullName: payload.full_name,
+        email: payload.email,
+        contactNumber: payload.contact_number,
+        companyDesignation: payload.company_designation,
+        requireInvoice: payload.require_invoice,
+        invoiceName: payload.invoice_name || "-",
+        amountDisplay: tripConfig.amountDisplay,
+        payeeName: tripConfig.payeeName,
+        createdAt: new Date().toISOString()
+      });
+    } catch (notificationError) {
+      console.error(notificationError);
+    }
 
     form.reset();
     syncInvoiceField();
