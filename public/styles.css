@@ -215,6 +215,47 @@ img {
   line-height: 1.7;
 }
 
+.detail-group--takeaways {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fcfdff 0%, var(--surface-soft) 100%);
+}
+
+.takeaway-intro {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.takeaway-list {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.takeaway-list li {
+  position: relative;
+  padding: 12px 14px 12px 42px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  line-height: 1.75;
+}
+
+.takeaway-list li::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(211, 180, 122, 0.22);
+}
+
 .pay-card {
   margin-top: 16px;
   padding: 14px;
