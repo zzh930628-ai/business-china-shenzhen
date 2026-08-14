@@ -77,6 +77,9 @@ form.addEventListener("submit", async (event) => {
   try {
     const formData = new FormData(form);
     const submissionId = createSubmissionId();
+    const companyName = String(formData.get("companyName") || "").trim();
+    const designation = String(formData.get("designation") || "").trim();
+    const companyDesignation = [companyName, designation].filter(Boolean).join(" - ");
 
     const payload = {
       submission_id: submissionId,
@@ -86,7 +89,7 @@ form.addEventListener("submit", async (event) => {
       full_name: String(formData.get("fullName") || "").trim(),
       email: String(formData.get("email") || "").trim(),
       contact_number: String(formData.get("contactNumber") || "").trim(),
-      company_designation: String(formData.get("companyDesignation") || "").trim(),
+      company_designation: companyDesignation,
       require_invoice: "to_be_collected_later",
       invoice_name: null,
       payment_proof_path: "not_required_at_application_stage",

@@ -26,10 +26,13 @@
         background: radial-gradient(circle at top right, rgba(18, 53, 127, 0.08), transparent 24%), linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%);
         color: var(--ink);
       }
-      .topbar { background: #051127; color: #fff; }
-      .topbar-inner { max-width: 1180px; margin: 0 auto; padding: 16px 24px; }
-      .brand-name { font-size: 1.45rem; font-weight: 800; }
-      .brand-sub { margin-top: 4px; color: rgba(255,255,255,.72); font-size: .95rem; }
+      .topbar { background: #ffffff; color: var(--ink); border-bottom: 1px solid var(--line); }
+      .topbar-inner { max-width: 1180px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .success-brand { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+      .success-brand img { display: block; width: auto; height: auto; object-fit: contain; }
+      .success-brand__primary { max-width: 178px; max-height: 178px; }
+      .success-brand__secondary { max-width: 205px; max-height: 100px; }
+      .success-brand__partner { max-width: 190px; max-height: 58px; align-self: center; }
       .page { max-width: 1180px; margin: 0 auto; padding: 42px 24px 72px; }
       .hero { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(320px,.85fr); gap: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow); padding: 34px; }
       .eyebrow { margin: 0 0 10px; color: var(--brand); text-transform: uppercase; letter-spacing: .14em; font-size: .76rem; font-weight: 800; }
@@ -57,6 +60,10 @@
         .page { padding: 24px 14px 48px; }
         .hero,.next-steps-box { padding: 22px; border-radius: 20px; }
         .summary-row { flex-direction: column; align-items: flex-start; }
+        .success-brand { gap: 10px; }
+        .success-brand__primary { max-width: 126px; max-height: 126px; }
+        .success-brand__secondary { max-width: 154px; max-height: 74px; }
+        .success-brand__partner { max-width: 132px; max-height: 40px; }
         h1 { font-size: 2.2rem; }
       }
     </style>
@@ -64,8 +71,19 @@
   <body>
     <header class="topbar">
       <div class="topbar-inner">
-        <div class="brand-name">Business China</div>
-        <div class="brand-sub">YLP Immersion Programme - Shenzhen</div>
+        <div class="success-brand">
+          <img
+            src="./BClogo.png"
+            alt="Business China logo"
+            class="success-brand__primary"
+          />
+          <img
+            src="./YLPlogo.png"
+            alt="YLP Youth Leaders Programme logo"
+            class="success-brand__secondary"
+          />
+        </div>
+        <img src="./SCITGlogo.png" alt="SCITG logo" class="success-brand__partner" />
       </div>
     </header>
 

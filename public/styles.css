@@ -41,14 +41,15 @@ img {
 }
 
 .site-header {
-  background: #030816;
-  color: #fff;
+  background: #ffffff;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 
 .site-header__inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,12 +62,39 @@ img {
   gap: 14px;
 }
 
+.brand-block--dual-logo {
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.brand-copy[hidden] {
+  display: none;
+}
+
 .brand-logo {
   width: auto;
   height: auto;
   max-width: 200px;
   max-height: 64px;
   display: block;
+  object-fit: contain;
+}
+
+.brand-logo--primary {
+  max-width: 178px;
+  max-height: 178px;
+}
+
+.brand-logo--secondary {
+  max-width: 205px;
+  max-height: 100px;
+}
+
+.brand-logo--partner {
+  max-width: 190px;
+  max-height: 58px;
+  align-self: center;
 }
 
 .brand-title {
@@ -596,9 +624,28 @@ button:disabled {
     align-items: center;
   }
 
+  .brand-block--dual-logo {
+    gap: 10px;
+  }
+
   .brand-logo {
     max-width: 150px;
     max-height: 52px;
+  }
+
+  .brand-logo--primary {
+    max-width: 126px;
+    max-height: 126px;
+  }
+
+  .brand-logo--secondary {
+    max-width: 154px;
+    max-height: 74px;
+  }
+
+  .brand-logo--partner {
+    max-width: 132px;
+    max-height: 40px;
   }
 
   .page-shell {

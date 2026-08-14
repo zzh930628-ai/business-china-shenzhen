@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" role="img" aria-labelledby="title desc">
+  <title id="title">YLP Youth Leaders Programme</title>
+  <desc id="desc">Youth Leaders Programme logo with YLP wordmark and Chinese subtitle.</desc>
+  <defs>
+    <linearGradient id="ylpBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#afc1d4" />
+      <stop offset="100%" stop-color="#284671" />
+    </linearGradient>
+  </defs>
+  <rect width="560" height="360" fill="none" />
+  <g transform="translate(18 24)">
+    <text
+      x="0"
+      y="116"
+      fill="url(#ylpBlue)"
+      font-family="Inter, Arial, Helvetica, sans-serif"
+      font-size="124"
+      font-weight="800"
+      letter-spacing="4"
+    >
+      YLP
+    </text>
+    <path d="M66 24 L104 24 L150 86 L124 104 Z" fill="#ff5a1f" />
+    <path d="M118 12 L152 12 L104 104 L72 104 Z" fill="#ff5a1f" />
+    <text
+      x="12"
+      y="210"
+      fill="#244472"
+      font-family="Inter, Arial, Helvetica, sans-serif"
+      font-size="56"
+      font-weight="800"
+      letter-spacing="1"
+    >
+      YOUTH LEADERS
+    </text>
+    <text
+      x="58"
+      y="278"
+      fill="#244472"
+      font-family="Inter, Arial, Helvetica, sans-serif"
+      font-size="56"
+      font-weight="800"
+      letter-spacing="1"
+    >
+      PROGRAMME
+    </text>
+    <text
+      x="0"
+      y="346"
+      fill="#244472"
+      font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans SC, sans-serif"
+      font-size="58"
+      font-weight="700"
+      letter-spacing="8"
+    >
+      青年领袖研修班
+    </text>
+  </g>
+</svg>

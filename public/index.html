@@ -15,13 +15,19 @@
   <body>
     <header class="site-header">
       <div class="site-header__inner">
-        <div class="brand-block">
-          <div>
+        <div class="brand-block brand-block--dual-logo">
+          <div class="brand-copy" hidden>
             <div class="brand-title">Business China</div>
             <div class="brand-subtitle">YLP Immersion Programme - Shenzhen</div>
           </div>
+          <img src="./BClogo.png" alt="Business China logo" class="brand-logo brand-logo--primary" />
+          <img src="./YLPlogo.png" alt="YLP Youth Leaders Programme logo" class="brand-logo brand-logo--secondary" />
         </div>
-        <img src="./clients/business-china-ylp-shenzhen/logo.png" alt="Business China logo" class="brand-logo" />
+        <img
+          src="./SCITGlogo.png"
+          alt="SCITG logo"
+          class="brand-logo brand-logo--partner"
+        />
       </div>
     </header>
 
@@ -114,7 +120,7 @@
         <div class="section-heading">
           <p class="eyebrow">Apply Now</p>
           <h2>Participant Application Form</h2>
-          <p>Complete the form below to submit your interest for review.</p>
+          <p>Complete the form below for official program registration.</p>
         </div>
 
         <form id="registrationForm" enctype="multipart/form-data" novalidate>
@@ -132,8 +138,12 @@
               <input name="contactNumber" type="tel" required />
             </label>
             <label>
-              <span>Company Name &amp; Designation <span class="required">*</span></span>
-              <input name="companyDesignation" type="text" required />
+              <span>Company Name <span class="required">*</span></span>
+              <input name="companyName" type="text" required />
+            </label>
+            <label>
+              <span>Designation <span class="required">*</span></span>
+              <input name="designation" type="text" required />
             </label>
           </div>
 
