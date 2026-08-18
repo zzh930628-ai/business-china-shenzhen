@@ -16,10 +16,20 @@ module.exports = async (req, res) => {
     const lines = [
       "signup New Application Received",
       "",
-      `Name: ${body.fullName || "-"}`,
       `Programme: ${body.tripName || "-"}`,
+      `Submission ID: ${body.submissionId || "-"}`,
+      `Name: ${body.fullName || "-"}`,
+      `Email: ${body.email || "-"}`,
       `Phone: ${body.contactNumber || "-"}`,
-      `Submission ID: ${body.submissionId || "-"}`
+      `Company Name: ${body.companyName || "-"}`,
+      `Designation: ${body.designation || "-"}`,
+      `Company / Designation: ${body.companyDesignation || "-"}`,
+      `Invoice Required: ${body.requireInvoice || "-"}`,
+      `Invoice Title: ${body.invoiceName || "-"}`,
+      `Status: ${body.status || "-"}`,
+      `Amount: ${body.amountDisplay || "-"}`,
+      `Payee: ${body.payeeName || "-"}`,
+      `Submitted At: ${body.createdAt || "-"}`
     ];
 
     const response = await fetch(webhookUrl, {

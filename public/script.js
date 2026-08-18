@@ -126,9 +126,12 @@ form.addEventListener("submit", async (event) => {
         fullName: payload.full_name,
         email: payload.email,
         contactNumber: payload.contact_number,
+        companyName,
+        designation,
         companyDesignation: payload.company_designation,
         requireInvoice: "To be collected later",
         invoiceName: "To be collected later",
+        status: payload.status,
         amountDisplay: tripConfig.amountDisplay,
         payeeName: tripConfig.payeeName,
         createdAt: new Date().toISOString()
